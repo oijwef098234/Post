@@ -14,8 +14,8 @@ public class CreatePost {
     public String create(PostRequest postRequest) {
         PostEntity postEntity = new PostEntity(); // 여기서 빈 게시글을 만든다.
 
-        postEntity.setTitle(postEntity.getTitle()); // 빈 게시글에 요청에서 가져온 title을 넣는다.
-        postEntity.setContent(postEntity.getContent()); // 빈 게시글에 요청에서 가져온 content를 넣는다.
+        postEntity.setTitle(postRequest.getTitle()); // 빈 게시글에 요청에서 가져온 title을 넣는다.
+        postEntity.setContent(postRequest.getContent()); // 빈 게시글에 요청에서 가져온 content를 넣는다.
 
         postRepository.save(postEntity); // 새롭게 set된 게시글을 save해준다.
 
