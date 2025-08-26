@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: Post  # ?????? ??
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/postdb?useSSL=false&serverTimezone=UTC
+    username: root
+    password: oijwef098234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update   # create / create-drop / update / validate / none
+    show-sql: true       # ??? SQL ??
+    properties:
+      hibernate:
+        format_sql: true # SQL ?? ?? ??
+
+server:
+  port: 8080  # ?? ?? (??? ?? ??)

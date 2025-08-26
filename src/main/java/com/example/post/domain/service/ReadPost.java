@@ -13,7 +13,9 @@ public class ReadPost {
     private final PostRepository postRepository;
 
     public PostEntity readPost(Long id){
-        PostEntity result = postRepository.findById(id).orElse(null);
+        PostEntity result = postRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("id에 해당하는 글이 존재하지 않습니다")
+        );
         return result;
     }
     public List<PostEntity> readAllPosts(){
