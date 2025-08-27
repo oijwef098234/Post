@@ -21,7 +21,6 @@ public class PostEntity {
 
     private String title;
     private String content;
-    private String comment;
 
     public void updatePost(String title, String content){
         this.title = title;
