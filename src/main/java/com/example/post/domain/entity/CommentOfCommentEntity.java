@@ -19,10 +19,6 @@ public class CommentOfCommentEntity {
     private String comment;
 
     @ManyToOne
-    @JoinColumn(name = "post_id")
-    private PostEntity postEntity;
-
-    @ManyToOne
     @JoinColumn(name = "comment_id")
     private CommentEntity commentEntity;
 

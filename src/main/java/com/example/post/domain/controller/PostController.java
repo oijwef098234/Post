@@ -1,7 +1,6 @@
 package com.example.post.domain.controller;
 
 import com.example.post.domain.dto.request.PostRequest;
-import com.example.post.domain.dto.response.PostResponse;
 import com.example.post.domain.entity.PostEntity;
 import com.example.post.domain.service.CreatePost;
 import com.example.post.domain.service.DeletePost;
@@ -35,14 +34,14 @@ public class PostController {
     }
 
     @GetMapping("/{id}")
-    public PostResponse readPost(@PathVariable Long id){
-        PostResponse postEntity = readPost.readPost(id);
+    public PostEntity readPost(@PathVariable Long id){
+        PostEntity postEntity = readPost.readPost(id);
         return postEntity;
     }
 
     @GetMapping("/all")
-    public List<PostResponse> readAllPosts(){
-        List<PostResponse> postEntities = readPost.readAllPosts();
+    public List<PostEntity> readAllPosts(){
+        List<PostEntity> postEntities = readPost.readAllPosts();
         return postEntities;
     }
 

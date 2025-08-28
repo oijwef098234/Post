@@ -23,10 +23,9 @@ public class CreateComment {
         commentRepository.save(commentEntity);
     }
 
-    public void createCommentOfComment(PostEntity postEntity, CommentEntity commentEntity, String comment) {
+    public void createCommentOfComment(CommentEntity commentEntity, String comment) {
         CommentOfCommentEntity commentOfCommentEntity = new CommentOfCommentEntity();
 
-        commentOfCommentEntity.setPostEntity(postEntity);
         commentOfCommentEntity.setCommentEntity(commentEntity);
 
         commentOfCommentEntity.setComment(comment);
