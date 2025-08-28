@@ -19,7 +19,7 @@ public class ReadPost {
         );
         return result;
     }
-    public List<PostEntity> readAllPosts(){
-        return postRepository.findAll();
+    public List<PostResponse> readAllPosts(){
+        return postRepository.findAllByFeed();
     }
 }

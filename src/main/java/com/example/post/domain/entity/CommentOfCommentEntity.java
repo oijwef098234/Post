@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CommentEntity {
+public class CommentOfCommentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,7 +22,11 @@ public class CommentEntity {
     @JoinColumn(name = "post_id")
     private PostEntity postEntity;
 
-    public void updateComment(String comment){
+    @ManyToOne
+    @JoinColumn(name = "comment_id")
+    private CommentEntity commentEntity;
+
+    public void updateCommentOfCommentEntity(String comment) {
         this.comment = comment;
     }
 }

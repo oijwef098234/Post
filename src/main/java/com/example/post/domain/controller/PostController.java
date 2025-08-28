@@ -41,8 +41,8 @@ public class PostController {
     }
 
     @GetMapping("/all")
-    public List<PostEntity> readAllPosts(){
-        List<PostEntity> postEntities = readPost.readAllPosts();
+    public List<PostResponse> readAllPosts(){
+        List<PostResponse> postEntities = readPost.readAllPosts();
         return postEntities;
     }
 
