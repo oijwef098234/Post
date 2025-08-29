@@ -20,7 +20,9 @@ public class CommentEntity {
 
     private String comment;
 
-    private Long postId;
+    @ManyToOne(fetch = LAZY, optional = false)
+    @JoinColumn(name = "post_id",  nullable = false)
+    private PostEntity postEntity;
 
     public void updateComment(String comment){
         this.comment = comment;
