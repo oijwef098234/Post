@@ -19,8 +19,7 @@ public class UpdatePost {
                 () -> new IllegalArgumentException(id + "에 해당하는 게시글이 존재하지 않습니다")
         );
 
-        postEntity.setTitle(title);
-        postEntity.setContent(content);
+        postEntity.updatePost(title, content);
 
         postRepository.save(postEntity);
 

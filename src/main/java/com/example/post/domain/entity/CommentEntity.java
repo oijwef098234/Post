@@ -18,13 +18,13 @@ public class CommentEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String comment;
+    private String content;
 
     @ManyToOne(fetch = LAZY, optional = false)
     @JoinColumn(name = "post_id",  nullable = false)
     private PostEntity postEntity;
 
-    public void updateComment(String comment){
-        this.comment = comment;
+    public void updateComment(String content) {
+        this.content = content;
     }
 }
