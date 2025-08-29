@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import static jakarta.persistence.FetchType.LAZY;
+
 @Entity
 @Getter
 @Setter
@@ -18,9 +20,7 @@ public class CommentEntity {
 
     private String comment;
 
-    @ManyToOne
-    @JoinColumn(name = "post_id")
-    private PostEntity postEntity;
+    private Long postId;
 
     public void updateComment(String comment){
         this.comment = comment;

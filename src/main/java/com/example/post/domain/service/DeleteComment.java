@@ -8,13 +8,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class DeleteComment {
     private final CommentRepository commentRepository;
-    private final CommentOfCommentRepository commentOfCommentRepository;
 
     public void deleteComment(Long commentId) {
         commentRepository.deleteById(commentId);
-    }
-
-    public void deleteCommentOfComment(Long commentId) {
-        commentOfCommentRepository.deleteById(commentId);
     }
 }

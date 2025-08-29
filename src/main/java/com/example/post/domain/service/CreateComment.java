@@ -11,11 +11,11 @@ import org.springframework.stereotype.Service;
 public class CreateComment {
     private final CommentRepository commentRepository;
 
-    public void createComment(PostEntity post, String comment) {
+    public void createComment(Long postId, String comment) {
         CommentEntity commentEntity = new CommentEntity();
 
         commentEntity.setComment(comment);
-        commentEntity.setPostEntity(post);
+        commentEntity.setPostId(postId);
 
         commentRepository.save(commentEntity);
     }
