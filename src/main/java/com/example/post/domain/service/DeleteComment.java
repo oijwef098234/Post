@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 public class DeleteComment {
     private final CommentRepository commentRepository;
 
-    public void deleteComment(Long commentId) {
+    public String deleteComment(Long commentId) {
         commentRepository.deleteById(commentId);
+
+        return "게시글이 삭제되었습니다.";
     }
 }

@@ -14,7 +14,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ReadPost {
     private final PostRepository postRepository;
-    private final CommentRepository commentRepository;
 
     public PostEntity readPost(Long id){
         PostEntity result = postRepository.findById(id).orElseThrow(
@@ -24,26 +23,5 @@ public class ReadPost {
     }
     public List<PostEntity> readAllPosts(){
         return postRepository.findAll();
-    }
-
-    public List<CommentEntity> readAllComments(Long postId){
-        List<CommentEntity> results = commentRepository.findByPostEntityId(postId);
-
-        return results;
-    }
-
-    public PostAndCommentResponse readPostAndComments(Long postId){
-        PostEntity post = postRepository.findById(postId).orElseThrow(
-                () -> new IllegalArgumentException("id에 해당하는 게시글이 존재하지 않습니다")
-        );
-
-        List<CommentEntity> comment = commentRepository.findByPostEntityId(postId);
-
-        PostAndCommentResponse result = new PostAndCommentResponse();
-
-        result.setComment(comment);
-        result.setPost(post);
-
-        return result;
     }
 }
