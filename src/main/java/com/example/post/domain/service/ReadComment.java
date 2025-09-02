@@ -1,10 +1,12 @@
 package com.example.post.domain.service;
 
 import com.example.post.domain.dto.response.CommentResponse;
-import com.example.post.domain.dto.response.PostAndCommentResponse;
+import com.example.post.domain.dto.response.PostWithCommentResponse;
+import com.example.post.domain.entity.CommentEntity;
 import com.example.post.domain.entity.PostEntity;
 import com.example.post.domain.repository.CommentRepository;
 import com.example.post.domain.repository.PostRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,24 +18,24 @@ public class ReadComment {
     private final CommentRepository commentRepository;
     private final PostRepository postRepository;
 
-    public List<CommentResponse> readAllComments(Long postId){
-        List<CommentResponse> results = commentRepository.findByPostEntityId(postId);
+    // 게시글의 id에 해당하는 댓글만 읽어오기
+    public List<CommentEntity> onlyComments(Long postId) {
 
-        return results;
     }
 
-    public PostAndCommentResponse readPostAndComments(Long postId){
+    // 게시글과 댓글을 동시에 읽어오기
+    public PostWithCommentResponse postWithComments(Long postId) {
         PostEntity post = postRepository.findById(postId).orElseThrow(
-                () -> new IllegalArgumentException("id에 해당하는 게시글이 존재하지 않습니다")
+                () -> new IllegalArgumentException("게시글을 찾을 수 없습니다")
         );
+        List<String> comments = onlyComments(postId);
 
-        List<CommentResponse> comment = commentRepository.findByPostEntityId(postId);
+        PostWithCommentResponse postWithCommentResponse = new PostWithCommentResponse();
 
-        PostAndCommentResponse result = new PostAndCommentResponse();
+        postWithCommentResponse.setPost(post);
+        postWithCommentResponse.setComments(comments);
 
-        result.setComment(comment);
-        result.setPost(post);
-
-        return result;
+        return postWithCommentResponse;
     }
+
 }

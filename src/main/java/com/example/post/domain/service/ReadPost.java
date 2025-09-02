@@ -1,9 +1,6 @@
 package com.example.post.domain.service;
 
-import com.example.post.domain.dto.response.PostAndCommentResponse;
-import com.example.post.domain.entity.CommentEntity;
 import com.example.post.domain.entity.PostEntity;
-import com.example.post.domain.repository.CommentRepository;
 import com.example.post.domain.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

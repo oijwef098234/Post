@@ -1,8 +1,6 @@
 package com.example.post.domain.controller;
 
 import com.example.post.domain.dto.request.PostRequest;
-import com.example.post.domain.dto.response.PostAndCommentResponse;
-import com.example.post.domain.entity.CommentEntity;
 import com.example.post.domain.entity.PostEntity;
 import com.example.post.domain.service.*;
 import lombok.RequiredArgsConstructor;
