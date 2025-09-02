@@ -19,8 +19,14 @@ public class ReadComment {
     private final PostRepository postRepository;
 
     // 게시글의 id에 해당하는 댓글만 읽어오기
-    public List<CommentEntity> onlyComments(Long postId) {
+    public List<CommentResponse> onlyComments(Long postId) {
+        postRepository.findById(postId).orElseThrow(
+                () -> new EntityNotFoundException("해당 게시글이 존재하지 않습니다")
+        );
 
+        return commentRepository.findByPostEntity_Id(postId).stream()
+                .map(c -> new CommentResponse(c.getId(), c.getContent()))
+                .toList();
     }
 
     // 게시글과 댓글을 동시에 읽어오기
@@ -28,7 +34,7 @@ public class ReadComment {
         PostEntity post = postRepository.findById(postId).orElseThrow(
                 () -> new IllegalArgumentException("게시글을 찾을 수 없습니다")
         );
-        List<String> comments = onlyComments(postId);
+        List<CommentResponse> comments = onlyComments(postId);
 
         PostWithCommentResponse postWithCommentResponse = new PostWithCommentResponse();
 

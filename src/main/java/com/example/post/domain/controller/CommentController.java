@@ -1,5 +1,6 @@
 package com.example.post.domain.controller;
 
+import com.example.post.domain.dto.response.CommentResponse;
 import com.example.post.domain.dto.response.PostWithCommentResponse;
 import com.example.post.domain.service.CreateComment;
 import com.example.post.domain.service.DeleteComment;
@@ -33,19 +34,19 @@ public class CommentController {
 
         return ResponseEntity.ok("수정되었습니다");
     }
-//    // 댓글만 불러오기
-//    @GetMapping("/{postId}")
-//    public ResponseEntity<List<String>> readComment(@PathVariable Long postId){
-//        List<String> results =  readComment.onlyComments(postId);
-//
-//        return ResponseEntity.ok(results);
-//    }
-//    @GetMapping("/all/{postId}")
-//    public ResponseEntity<PostWithCommentResponse> readAllComments(@PathVariable Long postId){
-//        PostWithCommentResponse postWithCommentResponse = readComment.postWithComments(postId);
-//
-//        return ResponseEntity.ok(postWithCommentResponse);
-//    }
+    // 댓글만 불러오기
+    @GetMapping("/{postId}")
+    public ResponseEntity<List<CommentResponse>> readComment(@PathVariable Long postId){
+        List<CommentResponse> results =  readComment.onlyComments(postId);
+
+        return ResponseEntity.ok(results);
+    }
+    @GetMapping("/all/{postId}")
+    public ResponseEntity<PostWithCommentResponse> readAllComments(@PathVariable Long postId){
+        PostWithCommentResponse postWithCommentResponse = readComment.postWithComments(postId);
+
+        return ResponseEntity.ok(postWithCommentResponse);
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteComment(@PathVariable Long id){
