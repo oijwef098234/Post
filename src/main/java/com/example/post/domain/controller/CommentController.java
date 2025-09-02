@@ -1,5 +1,6 @@
 package com.example.post.domain.controller;
 
+import com.example.post.domain.dto.response.CommentResponse;
 import com.example.post.domain.dto.response.PostAndCommentResponse;
 import com.example.post.domain.entity.CommentEntity;
 import com.example.post.domain.service.CreateComment;
@@ -36,8 +37,8 @@ public class CommentController {
     }
 
     @GetMapping("/read-comment/{id}") // 댓글 id로 불러오기
-    public ResponseEntity<List<CommentEntity>> readAllComment(@PathVariable Long id){
-        List<CommentEntity> result = readComment.readAllComments(id);
+    public ResponseEntity<List<CommentResponse>> readAllComment(@PathVariable Long id){
+        List<CommentResponse> result = readComment.readAllComments(id);
 
         return ResponseEntity.ok(result);
     }
