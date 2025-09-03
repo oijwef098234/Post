@@ -1,5 +1,6 @@
 package com.example.post.domain.controller;
 
+import com.example.post.domain.dto.request.CommentRequest;
 import com.example.post.domain.dto.response.CommentResponse;
 import com.example.post.domain.dto.response.PostWithCommentResponse;
 import com.example.post.domain.service.CreateComment;
@@ -22,7 +23,7 @@ public class CommentController {
     private final DeleteComment deleteComment;
 
     @PostMapping("/{id}")
-    public ResponseEntity<String> createComment(@PathVariable Long id, @RequestBody String comment){
+    public ResponseEntity<String> createComment(@PathVariable Long id, @RequestBody CommentRequest comment){
         createComment.createComment(id, comment);
 
         return ResponseEntity.ok("댓글이 생성되었습니다");
